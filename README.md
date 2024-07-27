@@ -65,12 +65,5 @@ The application uses a SQLite database with a single table:
 
 Feel free to submit issues, pull requests, or suggest improvements. All contributions are welcome!
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Thanks to the Flask and Bootstrap communities for their excellent frameworks and documentation.
-- Special thanks to the Flask and SQLAlchemy documentation for their guidance and examples.
 
