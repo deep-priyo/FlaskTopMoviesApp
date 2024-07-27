@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}My Top {{ movie_count }} Movies{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="heading">My Top {{ movie_count }} Movies</h1>
+    <p class="description">These are my all-time favorite movies.</p>
+    <div class="sort-container">
+        <label for="sort-options" class="sort-label">Sort by:</label>
+        <ul class="sort-options">
+            <li><a href="{{ url_for('home', category='ranking') }}">Ranking</a></li>
+            <li><a href="{{ url_for('home', category='rating') }}">Rating</a></li>
+            <li><a href="{{ url_for('home', category='title') }}">Title</a></li>
+            <li><a href="{{ url_for('home', category='year') }}">Year</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        {% for movie in movies %}
+        <div class="card">
+            <div class="front" style="background-image: url('{{ movie.img_url }}'); background-size: cover; background-position: center; height: 100%; width: 100%;">
+                <p class="large">{{ movie.ranking }}</p>
+            </div>
+            <div class="back">
+                <div>
+                    <div class="title">{{ movie.title }}<span class="release_date">{{ movie.year }}</span></div>
+                    <div class="rating">
+                        <label>{{ movie.rating }}</label>
+                        <i class="fas fa-star star"></i>
+                    </div>
+                    <p class="review">{{ movie.review }}</p>
+                    <p class="overview">{{ movie.description }}</p>
+                    <a href="{{ url_for('edit', movie_id=movie.id) }}" class="button">Update</a>
+                    <a href="{{ url_for('delete', movie_id=movie.id) }}" class="button delete-button">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="container text-center add">
+        <a href="{{ url_for('add') }}" class="button">Add Movie</a>
+    </div>
+</div>
+{% endblock %}
